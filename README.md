@@ -7,7 +7,7 @@ Configurable health endpoint for applications hosted in ElasticBeanstalk.
 
 * Run the install
 
-```
+```bash
 python setup.py install
 ```
 
@@ -15,7 +15,7 @@ python setup.py install
 
 * Add `django-health` to your `INSTALLED_APPS`
 
-```
+```python
 INSTALLED_APPS = [
     ...
     'django_health',
@@ -24,7 +24,7 @@ INSTALLED_APPS = [
 
 * Include the `django-health` URLconf in your project urls.py
 
-```
+```python
     url(r'^health/', include('django_health.urls')),
 ```
 
