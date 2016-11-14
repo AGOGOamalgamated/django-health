@@ -8,8 +8,8 @@ with open(os.path.join(os.path.dirname(__file__), 'README.md')) as readme:
 os.chdir(os.path.normpath(os.path.join(os.path.abspath(__file__), os.pardir)))
 
 setup(
-    name='django-site-health',
-    version='0.1.1',
+    name='django_site_health',
+    version='0.1.2',
     packages=find_packages(),
     install_requires=[
         "Django>=1.8",
