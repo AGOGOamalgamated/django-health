@@ -11,7 +11,6 @@ setup(
     license='BSD License',
     include_package_data=True,
     description='A simple Django app to provide a health page for your site.',
-    long_description=README,
     url='http://www.agogo.com/',
     author='Damian Hites',
     author_email='damian@agogo.com',
