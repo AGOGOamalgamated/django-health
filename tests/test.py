@@ -3,7 +3,7 @@ from unittest.mock import patch
 from django.test import TestCase, Client
 from django.db import OperationalError
 
-from django_health import constants
+from django_site_health import constants
 
 
 print('WTF')
@@ -22,7 +22,7 @@ class DBMockMixin(object):
 
     def setUp(self):
         super(DBMockMixin, self).setUp()
-        self._db_patcher = patch('django_health.views.connections')
+        self._db_patcher = patch('django_site_health.views.connections')
         mock_connections = self._db_patcher.start()
         self._db_cursor = mock_connections['default'].cursor
 
@@ -37,7 +37,7 @@ class FSMockMixin(object):
 
     def setUp(self):
         super(FSMockMixin, self).setUp()
-        self._fs_patcher = patch('django_health.views.TemporaryFile')
+        self._fs_patcher = patch('django_site_health.views.TemporaryFile')
         self._fs_tempfile = self._fs_patcher.start()
 
     def fs_disconnect(self):
@@ -58,7 +58,7 @@ class DBDisconnectedTests(DBMockMixin, WebTest):
         r = self.client.get(self.url_path, status=500)
         self.assertFalse(r.json()[constants.DATABASE])
 
-        with self.settings(DJANGO_HEALTH_FAILURE_CHECKS=(constants.FILESYSTEM,)):
+        with self.settings(DJANGO_SITE_HEALTH_FAILURE_CHECKS=(constants.FILESYSTEM,)):
             r = self.client.get(self.url_path, status=200)
             self.assertFalse(r.json()[constants.DATABASE])
 
@@ -74,6 +74,6 @@ class FSTests(FSMockMixin, WebTest):
         r = self.client.get(self.url_path, status=200)
         self.assertFalse(r.json()[constants.FILESYSTEM])
 
-        with self.settings(DJANGO_HEALTH_FAILURE_CHECKS=(constants.FILESYSTEM,)):
+        with self.settings(DJANGO_SITE_HEALTH_FAILURE_CHECKS=(constants.FILESYSTEM,)):
             r = self.client.get(self.url_path, status=500)
             self.assertFalse(r.json()[constants.FILESYSTEM])

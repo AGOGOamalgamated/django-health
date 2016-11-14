@@ -8,12 +8,13 @@ with open(os.path.join(os.path.dirname(__file__), 'README.md')) as readme:
 os.chdir(os.path.normpath(os.path.join(os.path.abspath(__file__), os.pardir)))
 
 setup(
-    name='django_health',
+    name='django-site-health',
     version='0.1.1',
     packages=find_packages(),
     install_requires=[
         "Django>=1.8",
     ],
+    license='BSD License',
     include_package_data=True,
     description='A simple Django app to provide a health page for your site.',
     long_description=README,
@@ -23,9 +24,8 @@ setup(
     classifiers=[
         'Environment :: Web Environment',
         'Framework :: Django',
-        'Framework :: Django :: 1.10',
         'Intended Audience :: Developers',
-        'License :: OSI Approved :: BSD License',  # example license
+        'License :: OSI Approved :: BSD License',
         'Operating System :: OS Independent',
         'Programming Language :: Python',
         'Programming Language :: Python :: 3',

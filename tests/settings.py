@@ -16,7 +16,7 @@ MIDDLEWARE_CLASSES = ()
 INSTALLED_APPS = (
     'django.contrib.auth',
     'django.contrib.contenttypes',
-    'django_health',
+    'django_site_health',
     'tests',
 )
 
