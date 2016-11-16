@@ -37,7 +37,7 @@ class FSMockMixin(object):
 
     def setUp(self):
         super(FSMockMixin, self).setUp()
-        self._fs_patcher = patch('django_site_health.views.TemporaryFile')
+        self._fs_patcher = patch('django_site_health.views.NamedTemporaryFile')
         self._fs_tempfile = self._fs_patcher.start()
 
     def fs_disconnect(self):

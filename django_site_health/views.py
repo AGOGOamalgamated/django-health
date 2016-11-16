@@ -1,4 +1,4 @@
-from tempfile import TemporaryFile
+from tempfile import NamedTemporaryFile
 
 from django.db import connections, OperationalError
 from django.http import JsonResponse
@@ -26,7 +26,7 @@ def get_fs_status(request):
     Test that the File System is writable
     """
     try:
-        testfile = TemporaryFile()
+        testfile = NamedTemporaryFile()
         testfile.close()
     except OSError as e:
         fs_status = False
